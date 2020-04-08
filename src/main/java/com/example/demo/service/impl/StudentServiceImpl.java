@@ -170,7 +170,8 @@ public class StudentServiceImpl implements StudentService {
         String params="<?xml version=\"1.0\" encoding=\"UTF-8\"?><Array><accessKey>"+xzqh+"</accessKey><code>"+code+"</code><loginName>loginName</loginName><userName>userName</userName><bizId>"+projId+"</bizId></Array>";
 
 //        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-        String result = WebServiceUtil.send(url, methodName, params);
+//        String result = WebServiceUtil.send(url, methodName, params);
+        String result="<?xml version=\"1.0\" encoding=\"UTF-8\"?><entitys><entity><attchmentId></attchmentId><entityId>380570350</entityId><material>《实行综合计算工时工作制和不定时工作制申报表》</material><detail>null</detail><flag>1</flag><isScan>1</isScan><isShow>1</isShow><entityClassId>380570349</entityClassId><refer>0</refer></entity><entity><attchmentId></attchmentId><entityId>380570352</entityId><material>营业执照或社会保险登记证</material><detail>null</detail><flag>1</flag><isScan>1</isScan><isShow>1</isShow><entityClassId>380570351</entityClassId><refer>0</refer></entity><entity><attchmentId></attchmentId><entityId>380570354</entityId><material>工会（或涉岗职工）意见</material><detail>null</detail><flag>1</flag><isScan>0</isScan><isShow>1</isShow><entityClassId>380570353</entityClassId><refer>0</refer></entity></entitys>";
 
         if (StringUtils.isNotEmpty(result)){
             try {
@@ -216,8 +217,8 @@ public class StudentServiceImpl implements StudentService {
         String url="http://localhost:8080/bipWZ/ws/LicenseLibraryvView?wsdl";
         String methodName="licenseLibraryvView";
         String params="<?xml version=\"1.0\" encoding=\"UTF-8\"?><Array><accessKey>"+xzqh+"</accessKey><code>"+code+"</code><loginName>loginName</loginName><userName>userName</userName><bizId>"+projId+"</bizId></Array>";
-
-        String result = WebServiceUtil.send(url, methodName, params);
+        String result="<?xml version=\"1.0\" encoding=\"UTF-8\"?><licences><licence><ftpPath>/ygzw/20200324/dda8e7e9-c289-4ae2-b2e0-137df4a6b3ad.jpg</ftpPath><fileName>dzdacs-2020-03-249:39:55-晴明</fileName><classNumber>1</classNumber><attchmentId>381861806</attchmentId><entityId>380570350</entityId><entityClassId>379806966</entityClassId><flag>-1</flag><materialName>身份证</materialName></licence></licences>";
+//        String result = WebServiceUtil.send(url, methodName, params);
 
         if (StringUtils.isNotEmpty(result)) {
             try {

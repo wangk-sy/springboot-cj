@@ -22,23 +22,23 @@
 </div>
 <div class="modal-body">
     <div class="file-loading">
-    <input id="input-b3" name="input-b3[]" type="file" class="file" multiple
-         data-show-caption="true">
+    <input id="input-b3" name="file" type="file" class="file" multiple>
     </div>
     <div id="kartik-file-errors"></div>
 </div>
 <div class="modal-footer">
     <button type="button" id="closeBtn" class="btn btn-default" data-dismiss="modal">取消</button>
-    <button type="button" id="uploadBtn" class="btn btn-primary">上传</button>
+    <button type="button" id="uploadBtn" class="btn btn-primary">确定</button>
 </div>
 </body>
 <script>
         $("#input-b3").fileinput({
+            language:'zh',
+            showCaption: false,
             showClose:false,
-            showUpload: false,
             elErrorContainer: '#kartik-file-errors',
-            allowedFileExtensions: ["jpg", "png", "gif"]
-            //uploadUrl: '/site/file-upload-single'
+            allowedFileExtensions: ["jpg", "png", "pdf"],
+            uploadUrl: '/upload'
         });
 </script>
 </html>
