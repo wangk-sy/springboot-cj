@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.css}" rel="stylesheet"/>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/fileinput/plugins/piexif.js}"></script>
+    <script type="text/javascript" th:src="@{/fileinput/plugins/purify.js}"></script>
+    <script type="text/javascript" th:src="@{/fileinput/plugins/sortable.js}"></script>
+    <script type="text/javascript" th:src="@{/fileinput/js/fileinput.min.js}"></script>
+    <script type="text/javascript" th:src="@{/fileinput/locales/zh.js}"></script>
+    <script type="text/javascript" th:src="@{/fileinput/themes//fa/theme.js}"></script>
+    <link th:href="@{/fileinput/css/fileinput.min.css}" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">文件上传</h4>
+</div>
+<div class="modal-body">
+    <div class="file-loading">
+    <input id="input-b3" name="input-b3[]" type="file" class="file" multiple
+         data-show-caption="true">
+    </div>
+    <div id="kartik-file-errors"></div>
+</div>
+<div class="modal-footer">
+    <button type="button" id="closeBtn" class="btn btn-default" data-dismiss="modal">取消</button>
+    <button type="button" id="uploadBtn" class="btn btn-primary">上传</button>
+</div>
+</body>
+<script>
+        $("#input-b3").fileinput({
+            showClose:false,
+            showUpload: false,
+            elErrorContainer: '#kartik-file-errors',
+            allowedFileExtensions: ["jpg", "png", "gif"]
+            //uploadUrl: '/site/file-upload-single'
+        });
+</script>
+</html>

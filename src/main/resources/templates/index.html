@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wangk</title>
+
+    <link th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css}" rel="stylesheet"/>
+    <script type="text/javascript" th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/cj.js}"></script>
+    <script type="text/javascript" th:src="@{/fileinput/js/fileinput.min.js}"></script>
+    <link th:href="@{/fileinput/css/fileinput.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link th:href="@{/css/preview.css}" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="cailiao" id="cailiao">
+    <div class='ps'><span style="color:red;font-size: 16px;">提示：可共享的材料点击共享按钮获取，若获取不到需自行上传</span></div>
+    <div class="cailiao-right">
+        <ul class='list-group' id="material"></ul>
+        <!--<div class="btn-group-vertical">
+            <button type="button" class="btn btn-default">查看全部</button>
+            <button type="button" class="btn" id="zc">保存</button>
+        </div>-->
+        <!--<span class='sumbt' id="sumbt" style="display:block;">保存</span>-->
+        <!-- <span class='sumbt' id="next" onclick="saveFn()">下一步</span>-->
+    </div>
+
+    <div class="cailiao-left">
+        <div style="margin: 8px 20px;">
+            <button class="newButton1" data-toggle="modal" th:id="upload">本地上传</button>
+            <div class="modal" id="modal222" style="display: none">
+
+            </div>
+            <button class="newButton2" th:id="gaopai">高拍</button>
+        </div>
+        <hr style="margin-top:40px;">
+        <!--图片预览容器-->
+        <div id="showArea" class="row">
+            <div></div>
+        </div>
+    </div>
+</div>
+<div class="modal bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+</body>
+
+
+</html>
