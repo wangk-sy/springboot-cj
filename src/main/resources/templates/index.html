@@ -30,9 +30,6 @@
     <div class="cailiao-left">
         <div style="margin: 8px 20px;">
             <button class="newButton1" data-toggle="modal" th:id="upload">本地上传</button>
-            <div class="modal" id="modal222" style="display: none">
-
-            </div>
             <button class="newButton2" th:id="gaopai">高拍</button>
         </div>
         <hr style="margin-top:40px;">
@@ -42,10 +39,11 @@
         </div>
     </div>
 </div>
-<div class="modal bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+<div class="modal bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
         </div>
+        <input type="hidden" id="entityId" name="entityId" value="">
     </div>
 </div>
 </body>

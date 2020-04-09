@@ -12,7 +12,7 @@ $(function () {
             success:function (res) {
                 var data = res.data;
                 $.each(data,function (i,n) {
-                    $("#material").append('<li  class="list list-group-item " data-toggle="tab" onclick="showImg(\''+n.id+'\')">'+this.name+'<span class="badge">'+n.count+'</span></li>')
+                    $("#material").append('<li  class="list list-group-item " data-toggle="tab" id="'+this.id+'" onclick="showImg(\''+n.id+'\')">'+this.name+'<span class="badge">'+n.count+'</span></li>')
                     appendImg(this);
                 })
 
@@ -21,6 +21,8 @@ $(function () {
     )
 
     $("#upload").click(function(){
+       var entityId = $("li.active").attr("id");
+       $("#entityId").val(entityId);
         $("#myModal").modal({
             backdrop:"static",
             remote:"/goUpload"
@@ -38,7 +40,7 @@ function appendImg(obj) {
     var _this=$(obj);
     var licenses =  _this[0].content;
    $.each(licenses,function (i,n) {
-       var html='<div class="col-sm-6 col-md-3" style="display: none;" entity='+this.entityId+' ><a href="#" class="thumbnail"><img src="/img/logo.png"></a></div>';
+       var html='<div class="col-sm-6 col-md-4" style="display: none;" entity='+this.entityId+' ><a href="#" class="thumbnail" style="width: 100%;height: 100%;"><img src="/img/logo.png"></a></div>';
        showArea.children("div:last").after(html);
    })
 }

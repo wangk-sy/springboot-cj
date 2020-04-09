@@ -6,14 +6,19 @@ import com.example.demo.core.ResultGenerator;
 import com.example.demo.model.Matetial;
 import com.example.demo.model.Student;
 import com.example.demo.service.StudentService;
+import com.github.tobato.fastdfs.domain.fdfs.StorePath;
+import com.github.tobato.fastdfs.service.FastFileStorageClient;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +35,9 @@ public class DzdaController {
 
     @Autowired
     private StudentService service;
+
+    @Autowired
+    private FastFileStorageClient storageClient;
 
     @RequestMapping("/")
     public String index(){
@@ -52,18 +60,27 @@ public class DzdaController {
 
     @ResponseBody
     @RequestMapping("/upload")
-    public Result upload(MultipartFile[] file,String fileId){
-        FastDFSClientUtil clientUtil = new FastDFSClientUtil();
-        String uploadFile="";
-        for (int i = 0; i <file.length ; i++) {
-            MultipartFile multipartFile = file[i];
+    public Result upload(MultipartFile[] files){
+        List<String> groupNames= new ArrayList<>();
+        for (int i = 0; i <files.length ; i++) {
+            MultipartFile multipartFile = files[i];
             String originalFilename = multipartFile.getOriginalFilename();
             try {
-                uploadFile   = clientUtil.uploadFile(multipartFile);
+                InputStream inputStream = files[i].getInputStream();
+                long size = files[i].getSize();
+                String  groupName = storageClient.uploadFile(inputStream,size, FilenameUtils.getExtension(originalFilename),null).getFullPath();
+                groupNames.add(groupName);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        return ResultGenerator.genSuccessResult(uploadFile);
+        return ResultGenerator.genSuccessResult(groupNames);
+    }
+
+    @RequestMapping("/viewImg")
+    public void viewImg(@RequestParam String groupName){
+        String group = groupName.substring(0, groupName.indexOf("/"));
+        String path = groupName.substring(groupName.indexOf("/") + 1);
+        InputStream inputStream = storageClient.downloadFile(group, path, null);
     }
 }

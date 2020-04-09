@@ -6,7 +6,7 @@
     <link th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.css}" rel="stylesheet"/>
     <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
-    <script type="text/javascript" th:src="@{/fileinput/plugins/piexif.js}"></script>
+<!--    <script type="text/javascript" th:src="@{/fileinput/plugins/piexif.js}"></script>-->
     <script type="text/javascript" th:src="@{/fileinput/plugins/purify.js}"></script>
     <script type="text/javascript" th:src="@{/fileinput/plugins/sortable.js}"></script>
     <script type="text/javascript" th:src="@{/fileinput/js/fileinput.min.js}"></script>
@@ -22,13 +22,13 @@
 </div>
 <div class="modal-body">
     <div class="file-loading">
-    <input id="input-b3" name="file" type="file" class="file" multiple>
+    <input id="input-b3" name="files" type="file" class="file" multiple>
     </div>
     <div id="kartik-file-errors"></div>
 </div>
 <div class="modal-footer">
     <button type="button" id="closeBtn" class="btn btn-default" data-dismiss="modal">取消</button>
-    <button type="button" id="uploadBtn" class="btn btn-primary">确定</button>
+    <button type="button" id="uploadBtn" class="btn btn-primary" data-dismiss="modal">确定</button>
 </div>
 </body>
 <script>
@@ -36,9 +36,22 @@
             language:'zh',
             showCaption: false,
             showClose:false,
+            showUpload:false,
             elErrorContainer: '#kartik-file-errors',
             allowedFileExtensions: ["jpg", "png", "pdf"],
             uploadUrl: '/upload'
         });
+
+    $("#uploadBtn").click(function() {
+        var entityId=$("#entityId").val();
+        $("#input-b3").fileinput("upload");
+        $("#input-b3").on("fileuploaded",function (event,data,previewId,index) {
+            var src =  document.getElementById(previewId).firstElementChild.firstElementChild.src;
+            var groupNames=data.response.data.groupNames;
+            var showArea = $("#showArea");
+            var html='<div class="col-sm-6 col-md-4" style="display: block;height: 150px;" entity='+entityId+' ><a href="#" class="thumbnail" style="width: 100%;height: 100%"><img style="width: 100%;height: 100%" src='+src+'></a></div>';
+            showArea.children("div:last").after(html);
+        })
+    })
 </script>
 </html>
