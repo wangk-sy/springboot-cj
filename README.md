@@ -4,4 +4,4 @@ springboot-cj项目是一个单体项目，未采用前后端分离开发，后�
 分布式文件存储系统，前端的一些功能，比如预览和上传等，采用了一些前端的插件，如viewer.js,modal.js,pdf.js,bootstrap-fileinput等等。
 
 ![预览](https://github.com/wangk-sy/springboot-cj/blob/master/1597372687.jpg?raw=true)
-![预览](https://github.com/wangk-sy/springboot-cj/blob/master/1597372687.jpg?raw=true)
+![预览](https://github.com/wangk-sy/springboot-cj/blob/master/1597373425.jpg?raw=true)
